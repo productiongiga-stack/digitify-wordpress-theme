@@ -4,6 +4,7 @@ wordpress/wp-includes/
 wordpress/wp-*.php
 !wordpress/router.php
 !wordpress/wp-config.sample.php
+!wordpress/install-local.php
 wordpress/xmlrpc.php
 wordpress/license.txt
 wordpress/readme.html
