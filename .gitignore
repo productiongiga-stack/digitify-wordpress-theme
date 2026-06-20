@@ -1,0 +1,30 @@
+# WordPress core (install separately)
+wordpress/wp-admin/
+wordpress/wp-includes/
+wordpress/wp-*.php
+!wordpress/router.php
+!wordpress/wp-config.sample.php
+wordpress/xmlrpc.php
+wordpress/license.txt
+wordpress/readme.html
+
+# Local config & generated files
+wordpress/wp-config.php
+wordpress/wp-content/debug.log
+wordpress/wp-content/uploads/
+wordpress/wp-content/database/
+wordpress/wp-content/themes/digitify/
+
+# Bundled default themes/plugins
+wordpress/wp-content/themes/twenty*/
+wordpress/wp-content/plugins/
+
+# Archives & tooling
+*.tar.gz
+deko-company-theme.zip
+wp-cli.phar
+dist/
+
+# OS
+.DS_Store
+__MACOSX/
