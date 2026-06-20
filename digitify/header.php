@@ -88,6 +88,9 @@
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="digitify-mobile-nav__link<?php echo digitify_is_current( 'home' ) ? ' is-active' : ''; ?>"><?php esc_html_e( 'Home', 'digitify' ); ?></a>
 					<a href="<?php echo esc_url( digitify_get_page_url( 'over-ons' ) ); ?>" class="digitify-mobile-nav__link<?php echo digitify_is_current( 'over-ons' ) ? ' is-active' : ''; ?>"><?php esc_html_e( 'Over ons', 'digitify' ); ?></a>
 					<a href="<?php echo esc_url( digitify_get_page_url( 'contact' ) ); ?>" class="digitify-mobile-nav__link<?php echo digitify_is_current( 'contact' ) ? ' is-active' : ''; ?>"><?php esc_html_e( 'Contact', 'digitify' ); ?></a>
+					<?php if ( digitify_shop_enabled() ) : ?>
+						<a href="<?php echo esc_url( digitify_get_shop_url() ); ?>" class="digitify-mobile-nav__link digitify-mobile-nav__link--shop"><?php esc_html_e( 'Webshop', 'digitify' ); ?></a>
+					<?php endif; ?>
 				</div>
 
 				<div class="digitify-mobile-nav__group<?php echo digitify_is_service_section() ? ' is-active' : ''; ?>">

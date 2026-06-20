@@ -18,3 +18,4 @@ require_once DIGITIFY_THEME_DIR . '/inc/cases.php';
 require_once DIGITIFY_THEME_DIR . '/inc/services.php';
 require_once DIGITIFY_THEME_DIR . '/inc/seo.php';
 require_once DIGITIFY_THEME_DIR . '/inc/pages.php';
+require_once DIGITIFY_THEME_DIR . '/inc/customizer.php';

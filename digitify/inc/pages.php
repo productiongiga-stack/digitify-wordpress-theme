@@ -342,7 +342,7 @@ function digitify_get_cases_nav_children() {
 }
 
 function digitify_get_primary_nav_items() {
-	return array(
+	$items = array(
 		array(
 			'slug'  => 'home',
 			'label' => __( 'Home', 'digitify' ),
@@ -373,6 +373,17 @@ function digitify_get_primary_nav_items() {
 			'url'   => digitify_get_page_url( 'contact' ),
 		),
 	);
+
+	if ( digitify_shop_enabled() ) {
+		$items[] = array(
+			'slug'  => 'webshop',
+			'label' => __( 'Webshop', 'digitify' ),
+			'url'   => digitify_get_shop_url(),
+			'class' => 'digitify-nav__link--shop',
+		);
+	}
+
+	return $items;
 }
 
 function digitify_render_mega_dropdown( $children, $hub = 'service' ) {
@@ -419,8 +430,12 @@ function digitify_render_primary_nav() {
 			|| ( $has_children && 'service' === $hub && digitify_is_service_section() )
 			|| ( $has_children && 'fleet' === $hub && digitify_is_fleet_section() );
 		$class        = 'digitify-nav__item' . ( $has_children ? ' digitify-nav__item--has-dropdown' : '' );
+		$link_class   = 'digitify-nav__link' . ( $active ? ' is-active' : '' );
+		if ( ! empty( $item['class'] ) ) {
+			$link_class .= ' ' . sanitize_html_class( $item['class'] );
+		}
 		echo '<li class="' . esc_attr( $class ) . '"' . ( $has_children ? ' aria-haspopup="true"' : '' ) . '>';
-		echo '<a href="' . esc_url( $item['url'] ) . '" class="digitify-nav__link' . ( $active ? ' is-active' : '' ) . '">';
+		echo '<a href="' . esc_url( $item['url'] ) . '" class="' . esc_attr( $link_class ) . '">';
 		echo '<span class="digitify-nav__link-text">' . esc_html( $item['label'] ) . '</span>';
 		if ( $has_children ) {
 			echo '<span class="digitify-nav__caret" aria-hidden="true"></span>';

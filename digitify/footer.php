@@ -59,6 +59,9 @@
 							<li><a href="<?php echo esc_url( digitify_get_page_url( 'cases' ) ); ?>"><?php esc_html_e( 'Cases', 'digitify' ); ?></a></li>
 							<li><a href="<?php echo esc_url( digitify_get_page_url( 'over-ons' ) ); ?>"><?php esc_html_e( 'Over ons', 'digitify' ); ?></a></li>
 							<li><a href="<?php echo esc_url( digitify_get_page_url( 'contact' ) ); ?>"><?php esc_html_e( 'Contact', 'digitify' ); ?></a></li>
+							<?php if ( digitify_shop_enabled() ) : ?>
+								<li><a href="<?php echo esc_url( digitify_get_shop_url() ); ?>" class="digitify-footer__link--shop"><?php esc_html_e( 'Webshop', 'digitify' ); ?></a></li>
+							<?php endif; ?>
 						</ul>
 					</nav>
 

@@ -56,6 +56,15 @@ function digitify_resource_hints( $urls, $relation_type ) {
 		'crossorigin' => 'anonymous',
 	);
 
+	if ( digitify_shop_enabled() ) {
+		$shop_host = wp_parse_url( digitify_get_shop_url(), PHP_URL_HOST );
+		if ( $shop_host ) {
+			$urls[] = array(
+				'href' => 'https://' . $shop_host,
+			);
+		}
+	}
+
 	return $urls;
 }
 add_filter( 'wp_resource_hints', 'digitify_resource_hints', 10, 2 );
@@ -106,6 +115,39 @@ function digitify_enqueue_assets() {
 			'strategy'  => 'defer',
 		)
 	);
+
+	if ( is_front_page() && digitify_shop_3d_enabled() ) {
+		wp_enqueue_script(
+			'digitify-model-viewer',
+			'https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js',
+			array(),
+			'3.5.0',
+			array(
+				'in_footer' => true,
+				'strategy'  => 'defer',
+			)
+		);
+
+		wp_enqueue_script(
+			'digitify-home-3d-cta',
+			DIGITIFY_THEME_URI . '/assets/js/home-3d-cta.js',
+			array( 'digitify-model-viewer' ),
+			DIGITIFY_THEME_VERSION,
+			array(
+				'in_footer' => true,
+				'strategy'  => 'defer',
+			)
+		);
+
+		wp_localize_script(
+			'digitify-home-3d-cta',
+			'digitifyHome3d',
+			array(
+				'shopUrl' => digitify_get_shop_url(),
+				'models'  => digitify_get_home_3d_models(),
+			)
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'digitify_enqueue_assets' );
 

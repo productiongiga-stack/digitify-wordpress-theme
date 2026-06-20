@@ -196,6 +196,10 @@ $hero_media   = digitify_get_home_hero_media();
 	</div>
 </section>
 
+<?php if ( digitify_shop_3d_enabled() ) : ?>
+	<?php get_template_part( 'template-parts/home', 'shop-cta' ); ?>
+<?php endif; ?>
+
 <section class="digitify-section digitify-section--tight digitify-home-cta digitify-home-cta--signature digitify-reveal">
 	<div class="digitify-container">
 		<div class="digitify-home-cta__inner">
